@@ -30,7 +30,61 @@ STEP-8: Repeat the above steps to generate the entire cipher text.
 
 
 ## PROGRAM
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main()
+{
+    char text[100], key[100], cipher[100];
+    int i, j = 0, len;
+
+    printf("Enter the plain text: ");
+    scanf("%99s", text);
+
+    printf("Enter the keyword: ");
+    scanf("%99s", key);
+
+    len = strlen(text);
+
+    for (i = 0; i < len; i++)
+    {
+        text[i] = toupper(text[i]);
+    }
+
+    for (i = 0; key[i] != '\0'; i++)
+    {
+        key[i] = toupper(key[i]);
+    }
+
+    for (i = 0; i < len; i++)
+    {
+        cipher[i] = ((text[i] - 'A' +
+                     (key[j] - 'A')) % 26) + 'A';
+
+        j++;
+
+        if (key[j] == '\0')
+        {
+            j = 0;
+        }
+    }
+
+    cipher[i] = '\0';
+
+    printf("Plain Text: %s\n", text);
+    printf("Keyword: %s\n", key);
+    printf("Cipher Text: %s\n", cipher);
+
+    return 0;
+}
+
+```
 
 ## OUTPUT
+<img width="1112" height="685" alt="Screenshot 2026-10-30 085215" src="https://github.com/user-attachments/assets/6c5482ef-7d99-41d5-afe7-d10e16b80267" />
+
 
 ## RESULT
+Thus the implementation of vigenere cipher had been executed successfully.
